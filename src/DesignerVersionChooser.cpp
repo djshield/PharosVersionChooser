@@ -123,6 +123,18 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+bool LaunchProcess(const std::wstring& path, const std::wstring& args = std::wstring())
+{
+    STARTUPINFO info = { sizeof(info) };
+    PROCESS_INFORMATION processInfo;
+    auto cmdline = path + std::wstring(L" ") + args;
+    auto ok = CreateProcess(NULL, cmdline.data(), NULL, NULL, TRUE, 0, NULL, NULL, &info, &processInfo);
+    CloseHandle(processInfo.hProcess);
+    CloseHandle(processInfo.hThread);
+    return ok;
+}
+
+
 VOID LaunchDesigner(const bool debugMode)
 {
     const auto selItem = static_cast<INT>(SendMessage(hwList, LB_GETCURSEL, 0, 0));
@@ -136,7 +148,7 @@ VOID LaunchDesigner(const bool debugMode)
             commandLine += std::wstring(L"-d ");
         }
         commandLine.append(szCommandLine);
-        ShellExecute(NULL, NULL, path.c_str(), commandLine.data(), directory.c_str(), SW_NORMAL);
+        LaunchProcess(path, commandLine);
     }
 }
 
@@ -146,6 +158,7 @@ VOID LaunchRecoveryTool()
     if ((selItem >= 0) && (mList.size() > selItem))
     {
         const auto path = mList.at(selItem).recoveryToolPath();
+        // Use ShellExecute here as recovery tool needs privilege escalation
         ShellExecute(NULL, NULL, path.c_str(), NULL, NULL, SW_SHOWNORMAL);
     }
 }
@@ -154,7 +167,7 @@ VOID UninstallDesigner()
 {
     int selItem = (INT)SendMessage(hwList, LB_GETCURSEL, 0, 0);
     std::wstring path = mList.at(selItem).uninstallerPath();
-    ShellExecute(NULL, NULL, path.c_str(), NULL, NULL, SW_NORMAL);
+    LaunchProcess(path);
 }
 
 
