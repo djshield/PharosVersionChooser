@@ -177,6 +177,7 @@ CAPTION "Mosaic Designer Version Chooser"
 #else
 CAPTION "Expert Version Chooser"
 #endif
+#endif
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,107,130,50,14
