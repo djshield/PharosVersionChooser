@@ -53,28 +53,31 @@ target_include_directories(ExpertVersionChooser PRIVATE
 
 target_compile_definitions(ExpertVersionChooser PRIVATE EXPERTVERSIONCHOOSER)
 
+# Mosaic target
+add_executable(MosaicVersionChooser WIN32
+    src/DesignerVersionChooser.cpp
+    src/DesignerVersionList.cpp
+    resources/DesignerVersionChooser.rc
+    resources/DesignerVersionChooser.exe.manifest
+    )
+
+target_include_directories(MosaicVersionChooser PRIVATE
+    src
+    resources
+    )
+
+target_compile_definitions(MosaicVersionChooser PRIVATE MOSAICVERSIONCHOOSER)
+
 if(MSVC)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_UNICODE -DUNICODE)
     set_target_properties(DesignerVersionChooser PROPERTIES COMPILE_FLAGS "/Zc:wchar_t")
     set_target_properties(ExpertVersionChooser PROPERTIES COMPILE_FLAGS "/Zc:wchar_t")
+    set_target_properties(MosaicVersionChooser PROPERTIES COMPILE_FLAGS "/Zc:wchar_t")
 endif()
 
 # The ComCtl32 library modernizes UI to vista style
 target_link_libraries(DesignerVersionChooser PUBLIC Version ComCtl32)
 target_link_libraries(ExpertVersionChooser PUBLIC Version ComCtl32)
+target_link_libraries(MosaicVersionChooser PUBLIC Version ComCtl32)
 
 # Override the default NSIS template with our own
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/install" ${CMAKE_MODULE_PATH})
-set(CPACK_PACKAGE_VERSION ${APP_VERSION})
-set(CPACK_PACKAGE_VERSION_MAJOR ${VER_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${VER_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${VER_PATCH})
-
-# Installer using NSIS
-include(CPack)
-
-install(
-        TARGETS
-        DesignerVersionChooser
-        DESTINATION "bin"
-    )
