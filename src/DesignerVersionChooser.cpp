@@ -84,11 +84,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 }
 
 
-
 //
 //  FUNCTION: MyRegisterClass()
 //
 //  PURPOSE: Registers the window class.
+//
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
@@ -176,6 +176,7 @@ VOID UninstallDesigner()
     std::wstring path = mList.at(selItem).uninstallerPath();
     LaunchProcess(path);
 }
+
 
 
 VOID ShowInExplorer()
