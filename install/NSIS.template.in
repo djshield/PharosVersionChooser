@@ -17,7 +17,6 @@ SetCompressor /SOLID lzma
 
 !define FILE_PROJECT_CLASS "PharosControls\Designer.Project"
 !define FILE_PROJECT_EXTENSION "pd2"
-!define FILE_PROJECT_EXTENSION_MD "md2"
 
 !include Integration.nsh
 !include LogicLib.nsh
