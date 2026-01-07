@@ -31,6 +31,9 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #ifdef EXPERTVERSIONCHOOSER
     IDI_DESIGNERVERSIONCHOOSER  ICON                    "ExpertVersionChooser.ico"
     IDI_SMALL                   ICON                    "small.ico"
+#ifdef MOSAICVERSIONCHOOSER
+    IDI_DESIGNERVERSIONCHOOSER  ICON                    "MosaicVersionChooser.ico"
+    IDI_SMALL                   ICON                    "small.ico"
 #else
     IDI_DESIGNERVERSIONCHOOSER  ICON                    "DesignerVersionChooser.ico"
     IDI_SMALL                   ICON                    "small.ico"
