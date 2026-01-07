@@ -53,7 +53,7 @@ target_include_directories(ExpertVersionChooser PRIVATE
 
 target_compile_definitions(ExpertVersionChooser PRIVATE EXPERTVERSIONCHOOSER)
 
-# Source Files
+# Mosaic target
 add_executable(MosaicVersionChooser WIN32
     src/DesignerVersionChooser.cpp
     src/DesignerVersionList.cpp
