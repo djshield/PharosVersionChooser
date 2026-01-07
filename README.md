@@ -9,7 +9,7 @@ PharosVersionChooser is a trio of very small applications which detect copies of
 # How to Use PharosVersionChooser
 To use the tool, download the latest installer from the [Releases](https://github.com/pharos-labs/DesignerVersionChooser/releases) page.
 
-Then run the application for Designer, Expert,m or Mosaic Designer - a list of detected versions will be shown. You might wish to pin the applications to your taskbar or desktop for convenience.
+Then run the application for Designer, Expert, or Mosaic Designer - a list of detected versions will be shown. You might wish to pin the applications to your taskbar or desktop for convenience.
 
 # Building
 The application is built using straight Windows API (no MFC, Qt or other toolkits) in order to keep it as absolutely minimal as possible.
