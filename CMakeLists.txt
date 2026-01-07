@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 set(VER_MAJOR 1)
 set(VER_MINOR 0)
 set(VER_PATCH 0)
-set(VER_BUILD 4)
+set(VER_BUILD 6)
 set(APP_VERSION "${VER_MAJOR}.${VER_MINOR}.${VER_PATCH}.${VER_BUILD}")
 
 set(COMPANY_NAME "Pharos Labs")
@@ -81,3 +81,17 @@ target_link_libraries(ExpertVersionChooser PUBLIC Version ComCtl32)
 target_link_libraries(MosaicVersionChooser PUBLIC Version ComCtl32)
 
 # Override the default NSIS template with our own
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/install" ${CMAKE_MODULE_PATH})
+set(CPACK_PACKAGE_VERSION ${APP_VERSION})
+set(CPACK_PACKAGE_VERSION_MAJOR ${VER_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${VER_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${VER_PATCH})
+
+# Installer using NSIS
+include(CPack)
+
+install(
+        TARGETS
+        DesignerVersionChooser
+        DESTINATION "bin"
+    )
