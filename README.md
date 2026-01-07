@@ -7,7 +7,7 @@ PharosVersionChooser is a trio of very small applications which detect copies of
 ![Screenshot](./doc/screenshot.png)
 
 # How to Use PharosVersionChooser
-To use the tool, download the latest installer from the [Releases]([https://github.com/djshield/PharosVersionChooser/releases]) page.
+To use the tool, download the latest installer from the [Releases](https://github.com/djshield/PharosVersionChooser/releases) page.
 
 Then run the application for Designer, Expert, or Mosaic Designer - a list of detected versions will be shown. You might wish to pin the applications to your taskbar or desktop for convenience.
 
